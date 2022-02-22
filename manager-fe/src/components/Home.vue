@@ -3,7 +3,7 @@
     <div :class="['nav-side', isCollapse ? 'fold' : 'unfold']">
       <!-- 系统LOGO -->
       <div class="logo">
-        <img src="./../assets/logo.png" />
+        <img src="./../assets/meng.png" />
         <span>Manager</span>
       </div>
       <!-- 导航菜单 -->

@@ -15,7 +15,7 @@ const routes = [
                 name: 'welcome',
                 path: '/welcome',
                 meta: {
-                    title: '欢迎体验Vue3全栈课程'
+                    title: '欢迎进入通用后台管理系统'
                 },
                 component: () => import('@/views/Welcome.vue')
             },

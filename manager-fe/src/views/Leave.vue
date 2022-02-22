@@ -70,7 +70,7 @@
             <el-option label="年假" :value="3"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="休假类型" required>
+        <el-form-item label="休假时间" required>
           <el-row>
             <el-col :span="8">
               <el-form-item prop="startTime" required>

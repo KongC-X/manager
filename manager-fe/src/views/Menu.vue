@@ -58,7 +58,7 @@
         </el-table-column>
       </el-table>
     </div>
-    <el-dialog title="用户新增" v-model="showModal">
+    <el-dialog title="菜单新增" v-model="showModal">
       <el-form
         ref="dialogForm"
         :model="menuForm"
@@ -88,7 +88,7 @@
           prop="icon"
           v-show="menuForm.menuType == 1"
         >
-          <el-input v-model="menuForm.icon" placeholder="请输入岗位" />
+          <el-input v-model="menuForm.icon" placeholder="请输入图标" />
         </el-form-item>
         <el-form-item
           label="路由地址"

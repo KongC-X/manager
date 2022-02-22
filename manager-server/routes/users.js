@@ -32,7 +32,7 @@
  
        const token = jwt.sign({
          data
-       }, 'imooc', { expiresIn: '1h' })
+       }, 'kongc', { expiresIn: '1h' })
        data.token = token;
        ctx.body = util.success(data)
      } else {

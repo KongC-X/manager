@@ -45,7 +45,7 @@
      decoded(authorization) {
          if (authorization) {
              let token = authorization.split(' ')[1]
-             return jwt.verify(token, 'imooc')
+             return jwt.verify(token, 'kongc')
          }
          return '';
      },

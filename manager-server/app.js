@@ -47,7 +47,7 @@ app.use(async (ctx, next) => {
   })
 })
 
-app.use(koajwt({ secret: 'imooc' }).unless({
+app.use(koajwt({ secret: 'kongc' }).unless({
   path: [/^\/api\/users\/login/]
 }))
 
