@@ -29,6 +29,7 @@ app.use(json())
 app.use(logger())
 app.use(require('koa-static')(__dirname + '/public'))
 
+// 模版渲染中间件
 app.use(views(__dirname + '/views', {
   extension: 'pug'
 }))
@@ -53,6 +54,7 @@ app.use(koajwt({ secret: 'kongc' }).unless({
 
 router.prefix("/api")
 
+// allowedMethods 处理的业务是当所有路由中间件执行完成之后，若 ctx.status 为空或者 404 的时候，丰富 response 对象的 header 头，response header 中加上 Allow
 router.use(users.routes(), users.allowedMethods())
 router.use(menus.routes(), menus.allowedMethods())
 router.use(roles.routes(), roles.allowedMethods())

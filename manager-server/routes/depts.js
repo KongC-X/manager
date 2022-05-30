@@ -2,6 +2,7 @@ const router = require('koa-router')()
 const util = require('./../utils/util')
 const Dept = require('./../models/deptSchema')
 
+ // prefix 为已经初始化的路由器实例设置路径前缀
 router.prefix('/dept')
 
 // 部门树形列表

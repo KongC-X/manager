@@ -4,6 +4,10 @@
  * Module dependencies.
  */
 
+
+// bin 目录放启动时的执行文件
+// bin的 www 为项目入口，通过它引入app.js配置内容
+
 var app = require('../app');
 var debug = require('debug')('demo:server');
 var http = require('http');

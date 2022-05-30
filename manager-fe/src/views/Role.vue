@@ -310,6 +310,7 @@ export default {
           }
         }
       };
+      // 深拷贝
       deep(JSON.parse(JSON.stringify(list)));
       this.actionMap = actionMap;
     },

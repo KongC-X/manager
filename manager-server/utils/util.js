@@ -42,6 +42,7 @@
          }
      },
      CODE,
+     // token 密钥验证
      decoded(authorization) {
          if (authorization) {
              let token = authorization.split(' ')[1]

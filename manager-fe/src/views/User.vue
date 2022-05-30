@@ -343,7 +343,9 @@ export default {
     const handleEdit = (row) => {
       action.value = "edit";
       showModal.value = true;
+      // 在下次 DOM 更新循环结束之后执行延迟回调，在修改数据之后立即使用，获取更新后的 DOM
       ctx.$nextTick(() => {
+        // Object.assign() 方法用于将所有可枚举属性的值从一个或多个源对象复制到目标对象
         Object.assign(userForm, row);
       });
     };

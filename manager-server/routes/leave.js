@@ -1,5 +1,5 @@
 /**
- * 用户管理模块
+ * 休假申请模块
  */
  const router = require('koa-router')()
  const Leave = require('../models/leaveSchema')
@@ -7,6 +7,8 @@
  const util = require('../utils/util')
  const jwt = require('jsonwebtoken')
  const md5 = require('md5')
+
+ // prefix 为已经初始化的路由器实例设置路径前缀
  router.prefix('/leave')
  
  // 查询申请列表
@@ -19,6 +21,7 @@
      let params = {};
      if (type == 'approve') {
        if (applyState == 1 || applyState == 2) {
+        // 1:待审批 2:审批中 3:审批拒绝 4:审批通过 5:作废
          params.curAuditUserName = data.userName;
          params.$or = [{ applyState: 1 }, { applyState: 2 }]
        } else if (applyState > 2) {
@@ -71,7 +74,7 @@
      // 生成申请单号
      let orderNo = "XJ"
      orderNo += util.formateDate(new Date(), "yyyyMMdd");
-     const total = await Leave.countDocuments()
+     const total = await Leave.countDocuments() // 计算集合中的文档数
      params.orderNo = orderNo + total;
  
      // 获取用户当前部门ID
@@ -94,8 +97,8 @@
  
      params.auditUsers = auditUsers;
      params.curAuditUserName = dept.userName;
-     params.auditFlows = auditFlows;
-     params.auditLogs = []
+     params.auditFlows = auditFlows; // 审批流
+     params.auditLogs = [] // 审批日志
      params.applyUser = {
        userId: data.userId,
        userName: data.userName,

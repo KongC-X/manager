@@ -28,4 +28,5 @@ const userSchema = mongoose.Schema({
     remark:String
 })
 
+// 调用 mongoose.model 来编译 Schema 得到 Model
 module.exports = mongoose.model("users",userSchema,"users")

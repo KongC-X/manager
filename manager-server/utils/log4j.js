@@ -1,6 +1,5 @@
 /**
  * 日志存储
- * @author JackBean
  */
 const log4js = require('log4js')
 

@@ -9,27 +9,22 @@
  const util = require('./../utils/util')
  const jwt = require('jsonwebtoken')
  const md5 = require('md5')
+
+ // prefix 为已经初始化的路由器实例设置路径前缀
  router.prefix('/users')
  
  // 用户登录
  router.post('/login', async (ctx) => {
    try {
      const { userName, userPwd } = ctx.request.body;
-     /**
-      * 返回数据库指定字段，有三种方式
-      * 1. 'userId userName userEmail state role deptId roleList'
-      * 2. {userId:1,_id:0}
-      * 3. select('userId')
-      */
      const res = await User.findOne({
        userName,
        userPwd: md5(userPwd)
      }, 'userId userName userEmail state role deptId roleList')
  
      if (res) {
- 
        const data = res._doc;
- 
+       // 生成 token ，并设置过期时间 1h 
        const token = jwt.sign({
          data
        }, 'kongc', { expiresIn: '1h' })
@@ -91,6 +86,7 @@
    }
    ctx.body = util.fail('删除失败');
  })
+
  // 用户新增/编辑
  router.post('/operate', async (ctx) => {
    const { userId, userName, userEmail, mobile, job, state, roleList, deptId, action } = ctx.request.body;
@@ -136,12 +132,13 @@
      }
    }
  })
+ 
  // 获取用户对应的权限菜单
  router.get("/getPermissionList", async (ctx) => {
    let authorization = ctx.request.headers.authorization
    let { data } = util.decoded(authorization)
    let menuList = await getMenuList(data.role, data.roleList);
-   let actionList = getAction(JSON.parse(JSON.stringify(menuList)))
+   let actionList = getAction(JSON.parse(JSON.stringify(menuList))) // 深拷贝
    ctx.body = util.success({ menuList, actionList });
  })
  

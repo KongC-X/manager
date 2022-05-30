@@ -246,6 +246,7 @@ export default {
     handleEdit(row) {
       this.showModal = true;
       this.action = "edit";
+      // 将回调延迟到下次 DOM 更新循环之后执行。在修改数据之后立即使用它，然后等待 DOM 更新
       this.$nextTick(() => {
         Object.assign(this.menuForm, row);
       });

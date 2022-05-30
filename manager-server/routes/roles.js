@@ -1,11 +1,13 @@
 /**
- * 用户管理模块
+ * 角色管理模块
  */
  const router = require('koa-router')()
  const Role = require('../models/roleSchema')
  const util = require('../utils/util')
  const jwt = require('jsonwebtoken')
  const md5 = require('md5')
+
+ // prefix 为已经初始化的路由器实例设置路径前缀
  router.prefix('/roles')
  
  // 查询所有角色列表

@@ -2,6 +2,7 @@ const router = require('koa-router')()
 const util = require('../utils/util')
 const Menu = require('../models/menuSchema')
 
+ // prefix 为已经初始化的路由器实例设置路径前缀
 router.prefix('/menu')
 
 // 菜单列表查询

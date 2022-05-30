@@ -17,6 +17,7 @@ const service = axios.create({
 })
 
 // 请求拦截
+// 在请求之前配置用户 token
 service.interceptors.request.use((req) => {
     const headers = req.headers;
     const { token } = storage.getItem('userInfo');
@@ -25,6 +26,7 @@ service.interceptors.request.use((req) => {
 })
 
 // 响应拦截
+// 响应处理一些报错信息
 service.interceptors.response.use((res) => {
     const { code, data, msg } = res.data;
     if (code === 200) {
@@ -40,6 +42,7 @@ service.interceptors.response.use((res) => {
         return Promise.reject(msg || NETWORK_ERROR)
     }
 })
+
 /**
  * 请求核心函数
  * @param {*} options 请求配置
